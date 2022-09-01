@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_b_counter/bloc.dart';
+import 'package:flutter_b_counter/state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CounterPage extends StatelessWidget {
@@ -9,11 +10,11 @@ class CounterPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('COUNTER')),
-      body: BlocBuilder<CounterBloc, int>(
+      body: BlocBuilder<CounterBloc, CounterState>(
         buildWhen: (previous, current) => previous != current,
-        builder: (context, count) => Center(
+        builder: (context, state) => Center(
           child: Text(
-            '$count',
+            '${state.count}',
             style: const TextStyle(fontSize: 30.0),
           ),
         ),
